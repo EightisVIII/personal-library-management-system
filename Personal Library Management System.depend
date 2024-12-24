@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1734981218 source:c:\users\lenovo\documents\calculators\personal library management system\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<conio.h>
+
