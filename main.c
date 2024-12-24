@@ -8,7 +8,6 @@
 #define MAX_CHAR 500
 
 FILE *fptr;
-int entCount = 0;
 
 struct myLib{
     char title[300];
@@ -177,8 +176,6 @@ void writeFile(struct myLib entry){
     }
     fclose(readFile);
 
-    entCount++;
-
     fprintf(fptr, "\n\n\t\t\t\t\t ---------- ENTRY #%d ----------\n", totalEnt + 1);
     fprintf(fptr, "\t\t\t\t   Title: %s\n", entry.title);
     fprintf(fptr, "\t\t\t\t   ID: %d\n", entry.id);
@@ -205,7 +202,7 @@ void readFile(){
 void deleteEntry(){
     FILE *tempFile;
     int deleteChoice, totalEnt = 0;
-    struct myLib entry[entCount];
+    struct myLib entry[MAX_CHAR];
     char buffer[MAX_CHAR];
 
     fptr = fopen("library.txt", "r");
@@ -265,7 +262,7 @@ void deleteEntry(){
 
 void findEntry(){
     int totalEnt = 0;
-    struct myLib entry[entCount];
+    struct myLib entry[MAX_CHAR];
     char search[MAX_CHAR];
     char buffer[MAX_CHAR];
 
@@ -295,12 +292,6 @@ void findEntry(){
         }
     }
     fclose(fptr);
-
-    printf("\nDebug: Loaded %d entries.\n", totalEnt);
-    for (int i = 0; i < totalEnt; i++) {
-        printf("Entry #%d: Title='%s', ID=%d, Date='%s', Description='%s'\n",
-               i + 1, entry[i].title, entry[i].id, entry[i].date, entry[i].description);
-    }
 
     int entryFound = 0;
     for(int j = 0; j < totalEnt; j++){
